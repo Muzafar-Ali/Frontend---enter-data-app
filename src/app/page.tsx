@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import useUserStore from "@/store/userStore";
 
 export default function Home() {
-  const { setUSerRole } = useUserStore();
+  const { setUser } = useUserStore();
   const router = useRouter();
 
   const [input, setInput] = useState<UserLoginInput>({
@@ -58,7 +58,7 @@ export default function Home() {
         return;
       }
 
-      setUSerRole(data.userRole);
+      setUser(data.user);
       localStorage.setItem('district', input.district)
       router.push('/record');
       

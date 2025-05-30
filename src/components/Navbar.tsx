@@ -5,8 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import useUserStore from '@/store/userStore'
 
-const Navbaar = () => {
-  const { role } = useUserStore();
+const Navbar = () => {
+  const { user } = useUserStore();
 
   const logoutHandler = async () => {
     try {
@@ -21,6 +21,7 @@ const Navbaar = () => {
       
       if(data.success) {
         localStorage.removeItem("district");
+        localStorage.removeItem("user-storage");
         window.location.href = '/';
       }
 
@@ -28,7 +29,7 @@ const Navbaar = () => {
       console.error('Error:', error);
     }
   }
-  
+
   return (
     <Wrapper className='mt-5 rounded py-5'>
       <div className='flex items-center justify-between px-10'>
@@ -43,7 +44,7 @@ const Navbaar = () => {
         </div>
 
         <div className='flex items-center gap-10 justify-between'>
-          { role === 'admin' && 
+          { user.role === 'admin' && 
             <Link
               href={"/admin/create-user"}
               className="bg-white text-black px-4 py-2 rounded-md cursor-pointer"
@@ -51,14 +52,38 @@ const Navbaar = () => {
               Create User
             </Link>
           }
+          
+          { (user.role === 'user' || user.role === 'admin') && 
+            <div>
+              <Link
+                href={`/record`}
+                className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
+              >
+                Enter Records
+              </Link>
+            </div>
+          }
+    
+          { user.role === 'user' &&
+            <div>
+              <Link
+                href={`/record/${user.id}`}
+                className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
+              >
+                View Records
+              </Link>
+            </div>
+          }
 
-          { role === 'admin' && 
-            <Link
-              href={"/record"}
-              className="bg-white text-black px-4 py-2 rounded-md cursor-pointer"
-            >
-              Create Record
-            </Link>
+          { user.role === 'admin' &&
+            <div>
+              <Link
+                href={`/record/district`}
+                className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
+              >
+                View Records by District
+              </Link>
+            </div>
           }
 
           <div>
@@ -78,4 +103,4 @@ const Navbaar = () => {
   )
 }
 
-export default Navbaar
+export default Navbar

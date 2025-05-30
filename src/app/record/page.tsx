@@ -5,7 +5,7 @@ import useUserStore from '@/store/userStore'
 import React, { useEffect, useState } from 'react'
 
 const RecordPage = () => {
-  const { role } = useUserStore();
+  const { user } = useUserStore();
 
   const initialInput = {
     district: "",
@@ -42,7 +42,7 @@ const RecordPage = () => {
   const [district, setDistrict] = useState<string | null>(null);
 
   useEffect(() => {
-    if(role !== 'admin') {
+    if(user.role !== 'admin') {
       
       const storedDistrict = localStorage.getItem("district");
       setDistrict(storedDistrict);   
@@ -50,7 +50,7 @@ const RecordPage = () => {
         setInput(prev => ({ ...prev, district: storedDistrict }));
       }
     }
-  }, [role]);
+  }, [user]);
 
   const changeEventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
