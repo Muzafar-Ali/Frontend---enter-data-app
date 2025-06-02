@@ -8,6 +8,7 @@ const RecordPage = () => {
   const { user } = useUserStore();
 
   const initialInput = {
+    category: "",
     district: "",
     police_station: "",
     crime: "",
@@ -160,6 +161,22 @@ const RecordPage = () => {
                   <span className="text-base text-red-400">{errors.police_station}</span>
                 )} 
               </div>
+            </div>
+          </div>
+
+          <div className="mb-4 mx-20">
+            <label className='text-white'>Category</label>
+            <div className="relative flex flex-col">
+              <input
+                type="text"
+                name="category"
+                value={input.category}
+                onChange={changeEventHandler}
+                className="px-2 border py-2 rounded-md text-white outline-none w-[50px]"
+              />
+              {errors && (
+                <span className="text-base text-red-400">{errors.category}</span>
+              )} 
             </div>
           </div>
 

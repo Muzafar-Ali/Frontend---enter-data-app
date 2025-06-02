@@ -43,7 +43,7 @@ const Navbar = () => {
           />
         </div>
 
-        <div className='flex items-center gap-10 justify-between'>
+        <div className='flex items-center gap-10 justify-between no-print'>
           { user.role === 'admin' && 
             <Link
               href={"/admin/create-user"}
@@ -54,7 +54,7 @@ const Navbar = () => {
           }
           
           { (user.role === 'user' || user.role === 'admin') && 
-            <div>
+            <div className='no-print'>
               <Link
                 href={`/record`}
                 className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
@@ -65,7 +65,7 @@ const Navbar = () => {
           }
     
           { user.role === 'user' &&
-            <div>
+            <div className='no-print'>
               <Link
                 href={`/record/${user.id}`}
                 className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
@@ -76,7 +76,7 @@ const Navbar = () => {
           }
 
           { user.role === 'admin' &&
-            <div>
+            <div className='no-print'>
               <Link
                 href={`/record/district`}
                 className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
@@ -86,7 +86,7 @@ const Navbar = () => {
             </div>
           }
 
-          <div>
+          <div className='no-print'>
             <button
               onClick={logoutHandler} 
               className="bg-white text-black px-4 py-2 rounded-md cursor-pointer"

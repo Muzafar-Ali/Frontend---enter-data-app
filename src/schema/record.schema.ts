@@ -39,6 +39,13 @@ const FIRSchema = z.object({
 
 
 export const recordSchema = z.object({
+  category: z.string({
+    required_error: "category is required"
+  })
+  .refine(val => ['A', 'B', 'C'].includes(val), {
+    message: 'Enter "A", "B", or "C"',
+  }),
+  
   district: z.string().min(1, "District is required"),
   police_station: z.string().min(1, "Police station is required"),
   crime: z.string().min(1, "Crime is required"),
@@ -55,6 +62,7 @@ export const recordSchema = z.object({
   by_others_private: z.object({
     details: z.string().optional(),
   }),
+
   status: z.string({
     required_error: "Status is required"
   })
