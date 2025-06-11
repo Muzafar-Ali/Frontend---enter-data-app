@@ -60,7 +60,7 @@ export default function Home() {
 
       setUser(data.user);
       localStorage.setItem('district', input.district)
-      router.push('/record');
+      router.push('/enter-record');
       
       setLoading(false);
     } catch (error: any) {

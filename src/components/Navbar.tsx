@@ -30,24 +30,25 @@ const Navbar = () => {
     }
   }
 
+  
   return (
-    <Wrapper className='mt-5 rounded py-5'>
-      <div className='flex items-center justify-between px-10'>
-        <div className="flex items-center justify-between gap-x-5">
-          <h1 className="font-bold text-2xl text-white">Sindh Police</h1>
+    <Wrapper className='mt-5 rounded py-5 border-b border-gray-600 shadow-xl'>
+      <div className='flex items-center justify-between px-2'>
+        <div className="flex items-center justify-between gap-x-2">
           <Image
             src={"/Sindh_Police_Logo.png"}
-            height={50}
-            width={50}
+            height={70}
+            width={70}
             alt="sind police logo"
           />
+          <h1 className="font-bold text-2xl md:text-4xl text-white">Sindh Police</h1>
         </div>
 
-        <div className='flex items-center gap-10 justify-between no-print'>
+        <div className='flex items-center gap-x-5 justify-between no-print'>
           { user.role === 'admin' && 
             <Link
               href={"/admin/create-user"}
-              className="bg-white text-black px-4 py-2 rounded-md cursor-pointer"
+              className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-3 rounded-md cursor-pointer"
             >
               Create User
             </Link>
@@ -57,7 +58,7 @@ const Navbar = () => {
             <div className='no-print'>
               <Link
                 href={`/enter-record`}
-                className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
+                className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-3 rounded-md cursor-pointer"
               >
                 Enter Records
               </Link>
@@ -67,8 +68,8 @@ const Navbar = () => {
           { user.role === 'user' &&
             <div className='no-print'>
               <Link
-                href={`/enter-record/view-record/${user.id}`}
-                className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
+                href={`/view-record/${user.id}`}
+                className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-3 rounded-md cursor-pointer"
               >
                 View Records
               </Link>
@@ -78,10 +79,21 @@ const Navbar = () => {
           { user.role === 'admin' &&
             <div className='no-print'>
               <Link
-                href={`/enter-record/district`}
-                className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
+                href={`/view-record/district`}
+                className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-3 rounded-md cursor-pointer"
               >
                 View Records by District
+              </Link>
+            </div>
+          }
+
+          { user.role === 'admin' &&
+            <div className='no-print'>
+              <Link
+                href={`/view-record/all`}
+                className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-3 rounded-md cursor-pointer"
+              >
+                View All Records
               </Link>
             </div>
           }
@@ -89,7 +101,7 @@ const Navbar = () => {
           <div className='no-print'>
             <button
               onClick={logoutHandler} 
-              className="bg-white text-black px-4 py-2 rounded-md cursor-pointer"
+              className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer"
             >
               Logout
             </button>
