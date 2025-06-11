@@ -56,7 +56,7 @@ const Navbar = () => {
           { (user.role === 'user' || user.role === 'admin') && 
             <div className='no-print'>
               <Link
-                href={`/record`}
+                href={`/enter-record`}
                 className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
               >
                 Enter Records
@@ -67,7 +67,7 @@ const Navbar = () => {
           { user.role === 'user' &&
             <div className='no-print'>
               <Link
-                href={`/record/${user.id}`}
+                href={`/enter-record/view-record/${user.id}`}
                 className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
               >
                 View Records
@@ -78,7 +78,7 @@ const Navbar = () => {
           { user.role === 'admin' &&
             <div className='no-print'>
               <Link
-                href={`/record/district`}
+                href={`/enter-record/district`}
                 className="bg-white text-black px-4 py-3 rounded-md cursor-pointer"
               >
                 View Records by District

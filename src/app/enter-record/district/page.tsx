@@ -1,8 +1,8 @@
 "use client"
 import Wrapper from "@/components/Wrapper"
 import React, { FormEvent, useEffect, useRef, useState } from "react"
-import { IRecord } from "../[userId]/page"
-import Edit from "@/components/Edit"
+import { IRecord } from "../view-record/[userId]/page"
+import Edit from "@/components/EditRecord"
 
 
 const UserRecordView = () => {
